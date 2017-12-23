@@ -97,3 +97,9 @@ for i in Geese:
     sum_feather.append(i.pluck())
 
 print("You got {} goose feather.".format(sum(sum_feather)))
+
+#Test2
+Sheep_0 = Sheep(15, 4, "white")
+Sheep_1 = Sheep(12, 10, "grey")
+print(Sheep_0.shear())
+print(Sheep_1.feed())
