@@ -1,3 +1,5 @@
+from pprint import pprint
+
 with open("cook_book.txt") as file:
     dishes = []
     cook_book = dict()
@@ -10,18 +12,18 @@ with open("cook_book.txt") as file:
         # print("Количество гостей: {}".format(person_count))
         ingridient_list = []
         for line in file:
-            if len(line) > 1:
-                ingridient = dict()
-                # print(line)
-                f = line.split("|")
-                ingridient["ingridient_name"] = f[0]
-                ingridient["quantity"] = int(f[1])
-                ingridient["measure"] = f[2].strip()
-                ingridient_list.append(ingridient.copy())
-            else:
+            line = line.strip()
+            if not line:
                 break
-        cook_book[dish] = ingridient_list
-    print(cook_book)
+            ingridient = dict()
+            # print(line)
+            f = line.split("|")
+            ingridient["ingridient_name"] = f[0]
+            ingridient["quantity"] = int(f[1])
+            ingridient["measure"] = f[2].strip()
+            ingridient_list.append(ingridient.copy())
+    cook_book[dish] = ingridient_list
+    pprint(cook_book)
 
 
     def get_shop_list_by_dishes(dishes, person_count):
@@ -43,7 +45,7 @@ with open("cook_book.txt") as file:
     def print_shop_list(shop_list):
         for shop_list_item in shop_list.values():
             print('{} {} {}'.format(shop_list_item['ingridient_name'], shop_list_item['quantity'],
-                                    shop_list_item['measure']))
+                                shop_list_item['measure']))
 
 
     def create_shop_list():
