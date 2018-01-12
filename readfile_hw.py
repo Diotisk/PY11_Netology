@@ -1,30 +1,73 @@
 from pprint import pprint
 
 with open("cook_book.txt") as file:
-    dishes = []
-    cook_book = dict()
 
-    for line in file:
-        dish = line.strip()
-        # print("Название блюда: {}".format(dish))
-        dishes.append(dish)
-        person_count = int(file.readline())
-        # print("Количество гостей: {}".format(person_count))
-        ingridient_list = []
+    def read_cook_book():
+        dishes = []
+        cook_book = dict()
+
         for line in file:
-            line = line.strip()
-            if not line:
-                break
-            else:
-                ingridient = dict()
-                # print(line)
-                f = line.split("|")
-                ingridient["ingridient_name"] = f[0].strip()
-                ingridient["quantity"] = int(f[1])
-                ingridient["measure"] = f[2].strip()
-                ingridient_list.append(ingridient.copy())
-        cook_book[dish] = ingridient_list
-    # pprint(cook_book)
+            dish = line.strip()
+            # print("Название блюда: {}".format(dish))
+            dishes.append(dish)
+            person_count = int(file.readline())
+            # print("Количество гостей: {}".format(person_count))
+            ingridient_list = []
+            for line in file:
+                if len(line) > 1:
+                    ingridient = dict()
+                    # print(line)
+                    f = line.split("|")
+                    ingridient["ingridient_name"] = f[0]
+                    ingridient["quantity"] = int(f[1])
+                    ingridient["measure"] = f[2].strip()
+                    ingridient_list.append(ingridient.copy())
+                else:
+                    break
+            cook_book[dish] = ingridient_list
+        return cook_book
+
+
+    #
+    # def read_cook_book():
+    #     global dishes
+    #     dishes = []
+    #     for line in file:
+    #         dish = line.strip()
+    #         # print("Название блюда: {}".format(dish))
+    #         dishes.append(dish)
+    #         global person_count
+    #         person_count = int(file.readline())
+    #         # print("Количество гостей: {}".format(person_count))
+    #
+    #         def form_ingridient_list():
+    #             global ingridient_list
+    #             ingridient_list = []
+    #             for line in file:
+    #                 line = line.strip()
+    #                 if not line:
+    #                     break
+    #                 else:
+    #                     ingridient = dict()
+    #                     # print(line)
+    #                     f = line.split("|")
+    #                     ingridient["ingridient_name"] = f[0].strip()
+    #                     ingridient["quantity"] = int(f[1])
+    #                     ingridient["measure"] = f[2].strip()
+    #                     ingridient_list.append(ingridient.copy())
+    #             return ingridient_list
+    #
+    #         form_ingridient_list()
+    #         global cook_book
+    #         cook_book = dict()
+    #         cook_book[dish] = ingridient_list
+    #         #pprint(cook_book)
+    #         return cook_book
+    #
+    # pprint(read_cook_book())
+
+
+    read_cook_book()
 
 
 def get_shop_list_by_dishes(dishes, person_count):
