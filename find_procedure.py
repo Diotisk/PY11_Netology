@@ -35,7 +35,8 @@ def search_files(files_list):
                 # print(j)
                 new_list.append(j)
                 count += 1
-    for k in new_list: print(k)
+    for k in new_list:
+        print(k)
     print(count)
     search_files(new_list)
 
