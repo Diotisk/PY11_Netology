@@ -1,5 +1,6 @@
 import os
 
+
 migrations = "Migrations"
 current_dir = os.path.dirname(os.path.abspath(__file__))
 print("Current working directory: ", current_dir)
@@ -7,7 +8,7 @@ print("Current working directory: ", current_dir)
 os.chdir(migrations)
 new_current_dir = os.getcwd()
 print("New current working directory: ", new_current_dir)
-print("All files in the new cwd: ", os.listdir(new_current_dir))
+# print("All files in the new cwd: ", os.listdir(new_current_dir))
 
 
 def search_files_cwd(extension, cwd):
@@ -16,8 +17,8 @@ def search_files_cwd(extension, cwd):
         i = os.path.splitext(file)
         if extension in i:
             searched_files.append(file)
-    print("SQL files only: ", searched_files)
-    print("Number of SQL files: ", len(searched_files))
+    # print("SQL files only: ", searched_files)
+    # print("Number of SQL files: ", len(searched_files))
     return searched_files
 
 sql_files = search_files_cwd(".sql", new_current_dir)
@@ -34,7 +35,7 @@ def search_files(files_list):
                 # print(j)
                 new_list.append(j)
                 count += 1
-    print(new_list)
+    for k in new_list: print(k)
     print(count)
     search_files(new_list)
 
