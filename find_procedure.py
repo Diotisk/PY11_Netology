@@ -1,45 +1,47 @@
-# Задание
-# мне нужно отыскать файл среди десятков других
-# я знаю некоторые части этого файла (на память или из другого источника)
-# я ищу только среди .sql файлов
-# 1. программа ожидает строку, которую будет искать (input())
-# после того, как строка введена, программа ищет её во всех файлах
-# выводит список найденных файлов построчно
-# выводит количество найденных файлов
-# 2. снова ожидает ввод
-# поиск происходит только среди найденных на этапе 1
-# 3. снова ожидает ввод
-# ...
-# Выход из программы программировать не нужно.
-# Достаточно принудительно остановить, для этого можете нажать Ctrl + C
-
-# Пример на настоящих данных
-
-# python3 find_procedure.py
-# Введите строку: INSERT
-# ... большой список файлов ...
-# Всего: 301
-# Введите строку: APPLICATION_SETUP
-# ... большой список файлов ...
-# Всего: 26
-# Введите строку: A400M
-# ... большой список файлов ...
-# Всего: 17
-# Введите строку: 0.0
-# Migrations/000_PSE_Application_setup.sql
-# Migrations/100_1-32_PSE_Application_setup.sql
-# Всего: 2
-# Введите строку: 2.0
-# Migrations/000_PSE_Application_setup.sql
-# Всего: 1
-
-# не забываем организовывать собственный код в функции
-
 import os
 
-migrations = 'Migrations'
+migrations = "Migrations"
 current_dir = os.path.dirname(os.path.abspath(__file__))
+print("Current working directory: ", current_dir)
 
-if __name__ == '__main__':
-    # ваша логика
-    pass
+os.chdir(migrations)
+new_current_dir = os.getcwd()
+print("New current working directory: ", new_current_dir)
+print("All files in the new cwd: ", os.listdir(new_current_dir))
+
+
+def search_files_cwd(extension, cwd):
+    searched_files = []
+    for file in os.listdir(cwd):
+        i = os.path.splitext(file)
+        if extension in i:
+            searched_files.append(file)
+    print("SQL files only: ", searched_files)
+    print("Number of SQL files: ", len(searched_files))
+    return searched_files
+
+sql_files = search_files_cwd(".sql", new_current_dir)
+
+
+def search_files(files_list):
+    count = 0
+    f = input("Search for: ")
+    new_list = []
+    for j in files_list:
+        with open(j, "r") as content:
+            content_list = content.read()
+            if f in content_list:
+                # print(j)
+                new_list.append(j)
+                count += 1
+    print(new_list)
+    print(count)
+    search_files(new_list)
+
+
+search_files(sql_files)
+
+
+# if __name__ == '__main__':
+#
+#     pass
