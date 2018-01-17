@@ -5,6 +5,9 @@ import collections
 
 news_list = []
 
+
+#def compose_news_list():
+
 with open("newsafr.json") as newsafr:
     text_newsafr = json.load(newsafr)
     news_list.append(text_newsafr)
@@ -12,6 +15,7 @@ with open("newsafr.json") as newsafr:
 with open("newscy.json", "rb") as newscy:
     t_newscy = newscy.read()
     decoded_newscy = chardet.detect(t_newscy)
+    print(decoded_newscy)
     result_newscy = t_newscy.decode(decoded_newscy["encoding"])
     # pprint(result_newscy)
     text_newscy = json.loads(result_newscy)
