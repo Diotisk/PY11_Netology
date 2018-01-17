@@ -1,3 +1,6 @@
+import requests
+
+
 class Animal:
     weight = 0
     age = 0
@@ -120,5 +123,3 @@ Sheep_0 = Sheep(15, 4, "white")
 Sheep_1 = Sheep(12, 10, "grey")
 print(Sheep_0.shear())
 print(Sheep_1.feed())
-
-import requests
