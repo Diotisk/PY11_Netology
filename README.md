@@ -10,5 +10,11 @@ The task was to read the file "cook_book.txt" so that the given code with functi
 File "utf8.py"
 The task was to read the given .txt files using chardet module and to find top 10 most frequently used words longer than 6 characters.
 
-File "json.py"
+File "decodejson.py"
 The task was to read the given .json files using chardet module and to find top 10 most frequently used words longer than 6 characters.
+
+File "find_procedure.py"
+The task was to search in the given folder "Migrations" for .sql files and organise a search through them for specific item.
+
+File "external_progr.py"
+The task was to copy .jpg files from the given folder "Source" and resize them using external program.
