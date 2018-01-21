@@ -36,6 +36,7 @@ def get_shop_list_by_dishes(dishes, person_count):
         for ingridient in cook_book[dish]:
             # print(ingridient)
             new_shop_list_item = dict(ingridient)
+            # print(new_shop_list_item)
 
             new_shop_list_item['quantity'] *= person_count
             if new_shop_list_item['ingridient_name'] not in shop_list:
