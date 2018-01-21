@@ -8,23 +8,28 @@ pictures = os.listdir("Source")
 print("Files in the folder 'Source': ", pictures)
 os.mkdir("Result")
 result_path = os.path.abspath("Result")
-
-for pic in pictures:
-    pic_source_path = os.path.abspath(os.path.join("Source", pic))
-    # print(pic_source_path)
-    copy_process = subprocess.Popen("cp" + " {}".format(pic_source_path) + " {}".format(result_path),
-                                    shell=True)
-    data_cp = copy_process.communicate()
-
 result_pictures = os.listdir("Result")
 
-for pic in result_pictures:
-    pic_result_path = os.path.abspath(os.path.join("Result", pic))
-    # print(pic_result_path)
-    resize_process = subprocess.Popen("sips --resampleWidth 100" + " {}".format(pic_result_path) +
-                                      " {}".format(result_path), shell=True)
-    data_sips = resize_process.communicate()
-    # print(data)
+
+def copy_resize_pics(source_files_list, result_files_list, result_dir):
+
+    for pic in source_files_list:
+        pic_source_path = os.path.abspath(os.path.join("Source", pic))
+        # print(pic_source_path)
+        copy_process = subprocess.Popen("cp" + " {}".format(pic_source_path) + " {}".format(result_dir),
+                                        shell=True)
+        copy_process.communicate()
+
+    for pic in result_files_list:
+        pic_result_path = os.path.abspath(os.path.join("Result", pic))
+        # print(pic_result_path)
+        resize_process = subprocess.Popen("sips --resampleWidth 300" + " {}".format(pic_result_path) +
+                                          " {}".format(result_dir), shell=True)
+        resize_process.communicate()
+        # print(data_sips)
+    return
+
+copy_resize_pics(pictures, result_pictures, result_path)
 
 print("Files in the folder 'Result': ", os.listdir("Result"))
 
