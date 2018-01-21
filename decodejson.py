@@ -1,4 +1,5 @@
-import simplejson as json
+# import simplejson as json
+import json
 import chardet
 from pprint import pprint
 import collections
