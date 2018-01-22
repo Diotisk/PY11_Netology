@@ -18,3 +18,6 @@ The task was to search in the given folder "Migrations" for .sql files and organ
 
 File "external_progr.py"
 The task was to copy .jpg files from the given folder "Source" and resize them using external program.
+
+File "list_compr.py"
+The task was to create a list of cubed integers out of mass which can be exactly divided by 3 and 4.
