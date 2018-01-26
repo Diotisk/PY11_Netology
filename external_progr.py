@@ -21,8 +21,7 @@ result_pictures = os.listdir("Result")
 for pic in result_pictures:
     pic_result_path = os.path.abspath(os.path.join("Result", pic))
     # print(pic_result_path)
-    resize_process = subprocess.Popen("sips --resampleWidth 100" + " {}".format(pic_result_path) +
-                                      " {}".format(result_path), shell=True)
+    resize_process = subprocess.Popen("sips --resampleWidth 100" + " {}".format(pic_result_path), shell=True)
     data_sips = resize_process.communicate()
     # print(data)
 
