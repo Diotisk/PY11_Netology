@@ -4,30 +4,6 @@ import shutil
 # import sys
 
 
-<<<<<<< HEAD
-pictures = os.listdir("Source")
-print("Files in the folder 'Source': ", pictures)
-os.mkdir("Result")
-result_path = os.path.abspath("Result")
-
-for pic in pictures:
-    pic_source_path = os.path.abspath(os.path.join("Source", pic))
-    # print(pic_source_path)
-    copy_process = subprocess.Popen("cp" + " {}".format(pic_source_path) + " {}".format(result_path),
-                                    shell=True)
-    data_cp = copy_process.communicate()
-
-result_pictures = os.listdir("Result")
-
-for pic in result_pictures:
-    pic_result_path = os.path.abspath(os.path.join("Result", pic))
-    # print(pic_result_path)
-    resize_process = subprocess.Popen("sips --resampleWidth 100" + " {}".format(pic_result_path), shell=True)
-    data_sips = resize_process.communicate()
-    # print(data)
-
-print("Files in the folder 'Result': ", os.listdir("Result"))
-=======
 def copy_resize_pics(source_dir, result_dir_name):
     source_pic_l = os.listdir(source_dir)
     os.mkdir(result_dir_name)
@@ -53,7 +29,6 @@ def copy_resize_pics(source_dir, result_dir_name):
     return
 
 copy_resize_pics("Source", "Result")
->>>>>>> testbranch2
 
 answer = input("Print 'yes' if you want to delete the folder 'Result'? ")
 if answer == "yes":
