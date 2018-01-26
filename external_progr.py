@@ -4,34 +4,31 @@ import shutil
 # import sys
 
 
-pictures = os.listdir("Source")
-print("Files in the folder 'Source': ", pictures)
-os.mkdir("Result")
-result_path = os.path.abspath("Result")
-result_pictures = os.listdir("Result")
+def copy_resize_pics(source_dir, result_dir_name):
+    source_pic_l = os.listdir(source_dir)
+    os.mkdir(result_dir_name)
+    result_dir = os.path.abspath(result_dir_name)
+    print("Files in the folder {}: ".format(source_dir), source_pic_l)
 
-
-def copy_resize_pics(source_files_list, result_files_list, result_dir):
-
-    for pic in source_files_list:
-        pic_source_path = os.path.abspath(os.path.join("Source", pic))
-        # print(pic_source_path)
-        copy_process = subprocess.Popen("cp" + " {}".format(pic_source_path) + " {}".format(result_dir),
+    for pic in source_pic_l:
+        source_pic_path = os.path.abspath(os.path.join(source_dir, pic))
+        # print(source_pic_path)
+        copy_process = subprocess.Popen("cp" + " {}".format(source_pic_path) + " {}".format(result_dir),
                                         shell=True)
         copy_process.communicate()
 
-    for pic in result_files_list:
-        pic_result_path = os.path.abspath(os.path.join("Result", pic))
-        # print(pic_result_path)
-        resize_process = subprocess.Popen("sips --resampleWidth 300" + " {}".format(pic_result_path) +
-                                          " {}".format(result_dir), shell=True)
+    result_pic_l = os.listdir(result_dir)
+
+    for pic in result_pic_l:
+        result_pic_path = os.path.abspath(os.path.join(result_dir, pic))
+        # print(result_pic_path)
+        resize_process = subprocess.Popen("sips --resampleWidth 150" + " {}".format(result_pic_path), shell=True)
         resize_process.communicate()
-        # print(data_sips)
+
+    print("Files in the folder {}: ".format(result_dir_name), result_pic_l)
     return
 
-copy_resize_pics(pictures, result_pictures, result_path)
-
-print("Files in the folder 'Result': ", os.listdir("Result"))
+copy_resize_pics("Source", "Result")
 
 answer = input("Print 'yes' if you want to delete the folder 'Result'? ")
 if answer == "yes":
