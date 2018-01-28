@@ -18,7 +18,7 @@ def read_cook_book():
                     ingredient["ingredient_name"] = ingredient_data[0].strip()
                     ingredient["quantity"] = int(ingredient_data[1])
                     ingredient["measure"] = ingredient_data[2].strip()
-                    ingr_list.append(ingredient.copy())
+                    ingr_list.append(ingredient)
             cook_book[dish] = ingr_list
     return cook_book
 
