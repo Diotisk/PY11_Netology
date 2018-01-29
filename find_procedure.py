@@ -3,11 +3,11 @@ import os
 
 migrations = "Migrations"
 current_dir = os.path.dirname(os.path.abspath(__file__))
-print("Current working directory: ", current_dir)
+# print("Current working directory: ", current_dir)
 
 new_current_dir = os.path.abspath(migrations)
-print("New current working directory: ", new_current_dir)
-print("All files in the new cwd: ", os.listdir(new_current_dir))
+# print("New current working directory: ", new_current_dir)
+# print("All files in the new cwd: ", os.listdir(new_current_dir))
 
 
 def search_files_cwd(extension, cwd):
@@ -16,26 +16,20 @@ def search_files_cwd(extension, cwd):
         i = os.path.splitext(file)
         if extension == i[1]:
             searched_files.append(file)
-    print("SQL files only: ", searched_files)
-    print("Number of SQL files: ", len(searched_files))
+    # print("SQL files only: ", searched_files)
+    # print("Number of SQL files: ", len(searched_files))
     return searched_files
 
 
 def search_files(files_list):
-    count = 0
-    searched_item = input("Search for: ")
+    searched_item = input("Введите строку: ")
     new_list = []
     for file in files_list:
-        print(file, len(files_list))
-        with open(file, "r") as content:
-            content_list = content.read()
-            print(content_list)
-            if searched_item in content_list:
-                new_list.append(file)
-                count += 1
-    for k in new_list:
-        print(k)
-    print(count)
+        with open(os.path.join(new_current_dir, file), "r") as content:
+            content = content.read()
+            if searched_item in content:
+                    new_list.append(file)
+    print("Всего: ", len(new_list))
     search_files(new_list)
 
 
