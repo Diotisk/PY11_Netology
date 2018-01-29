@@ -21,3 +21,9 @@ The task was to copy .jpg files from the given folder "Source" and resize them u
 
 File "list_compr.py"
 The task was to create a list of cubed integers out of mass which can be exactly divided by 3 and 4.
+
+File "req_hw.py"
+The task was to extend the given code and translate texts from .txt files into Russian with Yandex.Translate API and write the translated texts into other files.
+
+File "vkontakteapi.py"
+The task was to use VKontakte API and write a function for getting common friends of different users.
