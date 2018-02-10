@@ -30,7 +30,7 @@ def get_average_temps_celsius(path_name):
 
     return sum(temps_c_list) / len(temps_c_list)
 
-# print(get_average_temps_celsius("temps.txt"))
+print(get_average_temps_celsius("temps.txt"))
 
 
 def get_ticket_costs(path_name):
@@ -46,7 +46,22 @@ def get_ticket_costs(path_name):
         costs_rub_list.append(route_cost_rub)
     return round(sum(costs_rub_list))
 
-# print(get_ticket_costs("currencies.txt"))
+print(get_ticket_costs("currencies.txt"))
+
+
+def get_route_length(path_name):
+    client = osa.Client("http://www.webservicex.net/length.asmx?WSDL")
+    routes_list = read_file(path_name)
+    routes_length_list = []
+    for route in routes_list:
+        route_by_parts = route.strip().split()
+        length = float(route_by_parts[1].replace(",", ""))
+        route_length = client.service.ChangeLengthUnit(LengthValue=length, fromLengthUnit="Miles",
+                                                       toLengthUnit="Kilometers")
+        routes_length_list.append(route_length)
+    return round(sum(routes_length_list), 2)
+
+print(get_route_length("travel.txt"))
 
 # code from the lesson
 
