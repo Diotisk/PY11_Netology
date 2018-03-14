@@ -42,8 +42,6 @@ def get_friends(source_user_id, token):
 
     return friends
 
-# friends_list = get_friends(source_id, a_token)  # friends of the targeted user
-
 
 @timeout
 def get_groups(user_id, token):
@@ -62,8 +60,6 @@ def get_groups(user_id, token):
     groups = response.json()["response"]["items"]
 
     return groups
-
-# groups_list = get_groups(source_id, a_token)  # groups that the targeted user is a member of
 
 
 @timeout
@@ -95,8 +91,6 @@ def get_unique_groups(source_user_id, token):
             avoid_too_many_requests(count)
     print("Collected unique groups.")
     return groups_list
-
-# unique_groups = get_unique_groups()
 
 
 @timeout
